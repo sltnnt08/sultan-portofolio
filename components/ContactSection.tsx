@@ -44,6 +44,9 @@ function RotatingWord() {
     const [isDeleting, setIsDeleting] = useState(false)
     const currentWord = ROTATING_WORDS[wordIndex]
 
+    // longest word sets the reserved width so layout never shifts
+    const longestWord = ROTATING_WORDS.reduce((a, b) => (a.length >= b.length ? a : b))
+
     useEffect(() => {
         const atFullWord = typedText === currentWord
         const atEmptyWord = typedText.length === 0
@@ -72,24 +75,29 @@ function RotatingWord() {
     }, [currentWord, isDeleting, typedText, wordIndex])
 
     return (
-        <motion.span
-            className="relative flex items-baseline justify-center text-(--color-ink)"
-            initial={{ opacity: 0, y: 14, filter: 'blur(8px)' }}
-            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            style={{ willChange: 'transform, opacity, filter' }}
+        // invisible longest word reserves exact space; visible text is absolute on top
+        <span
+            className="relative inline-block text-center"
             aria-label={typedText}
+            aria-live="off"
         >
-            <span className="text-transparent bg-clip-text bg-[linear-gradient(135deg,var(--color-accent-green),var(--color-accent-blue))]">
-                {typedText}
-            </span>
-            <motion.span
-                className="ml-1 inline-block h-[0.88em] w-px bg-current align-middle"
-                animate={{ opacity: [1, 0, 1] }}
-                transition={{ duration: 0.9, repeat: Infinity, ease: 'easeInOut' }}
+            {/* space-holder — invisible but sets the width */}
+            <span className="invisible" aria-hidden="true">{longestWord}</span>
+
+            {/* actual visible text — absolutely positioned so it doesn't affect flow */}
+            <span
+                className="absolute inset-0 flex items-center justify-center text-transparent bg-clip-text bg-[linear-gradient(135deg,var(--color-accent-green),var(--color-accent-blue))]"
                 aria-hidden="true"
-            />
-        </motion.span>
+            >
+                {typedText}
+                <motion.span
+                    className="ml-1 inline-block h-[0.85em] w-[2px] bg-[var(--color-accent-blue)] align-middle"
+                    animate={{ opacity: [1, 0, 1] }}
+                    transition={{ duration: 0.9, repeat: Infinity, ease: 'easeInOut' }}
+                    aria-hidden="true"
+                />
+            </span>
+        </span>
     )
 }
 
@@ -135,19 +143,10 @@ export default function ContactSection() {
                         initial={{ opacity: 0, y: 24 }}
                         animate={inView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.85, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                        className="display-xxl max-w-3xl text-center"
+                        className="display-xxl max-w-3xl text-center leading-[1.15]"
                         style={{ color: 'var(--color-ink)' }}
                     >
-                        <motion.span
-                            className="flex flex-col items-center gap-y-0"
-                            initial={{ opacity: 0, y: 16, filter: 'blur(8px)' }}
-                            animate={inView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
-                            transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-                        >
-                            <span>Have a</span>
-                            <RotatingWord />
-                            <span>in mind?</span>
-                        </motion.span>
+                        Have a <RotatingWord /> in mind?
                     </motion.h2>
 
                     <motion.p
