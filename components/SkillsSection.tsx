@@ -5,24 +5,24 @@ import { motion, useInView } from 'framer-motion'
 
 const SKILLS = [
   {
-    category: 'Frontend',
+    category: 'Development',
     color: '#3b9eff',
-    items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Three.js / R3F'],
+    items: ['Python', 'JavaScript', 'PHP (Laravel)', 'TypeScript', 'REST & GraphQL', 'SQL'],
   },
   {
-    category: 'Backend',
+    category: 'Web Apps',
     color: '#11ff99',
-    items: ['Node.js', 'Bun', 'PostgreSQL', 'Prisma / Drizzle', 'REST & GraphQL', 'Redis'],
+    items: ['React', 'Next.js', 'Express', 'Supabase', 'PostgreSQL', 'Tailwind CSS'],
   },
   {
-    category: '3D & Creative',
+    category: 'DevOps & Cloud',
     color: '#ffc53d',
-    items: ['React Three Fiber', 'GSAP + ScrollTrigger', 'WebGL / GLSL', 'Blender', 'Drei', 'Shader Materials'],
+    items: ['Docker', 'Nginx', 'Linux', 'AWS', 'GCP', 'CI/CD'],
   },
   {
-    category: 'Tooling',
+    category: 'AI / ML',
     color: '#ff801f',
-    items: ['Vercel / Edge', 'Docker', 'CI/CD', 'Vite / Turbopack', 'Git', 'pnpm / Bun'],
+    items: ['PyTorch', 'TensorFlow', 'scikit-learn', 'LangChain', 'OpenAI API', 'Vector DBs'],
   },
 ]
 

@@ -85,8 +85,8 @@ export default function HeroSection() {
           className="mt-6 max-w-xl text-[rgba(252,253,255,0.7)] leading-[1.3]"
           style={{ fontSize: '20px', fontWeight: 400 }}
         >
-          Full-stack developer crafting immersive 3D web experiences,
-          performant applications, and precise developer tooling.
+          Full-stack developer building performant web applications,
+          cloud-native systems, and applied AI solutions.
         </motion.p>
 
         {/* CTAs */}

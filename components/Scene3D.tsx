@@ -272,13 +272,17 @@ function CameraRig() {
   return null
 }
 
-/* ─── Shards config ─── */
+/* ─── Shards config — one per stack pillar ─── */
 const SHARDS = [
-  { position: [2.5, 1.2, -1.5] as [number, number, number], rotation: [0.4, 0.8, 0.2] as [number, number, number], scale: 0.55, color: '#fcfdff', speed: 0.7 },
-  { position: [-2.8, -0.8, -2] as [number, number, number], rotation: [1.2, 0.4, 0.6] as [number, number, number], scale: 0.38, color: '#3b9eff', speed: 0.9 },
+  // Development (blue)
+  { position: [2.5, 1.2, -1.5] as [number, number, number], rotation: [0.4, 0.8, 0.2] as [number, number, number], scale: 0.55, color: '#3b9eff', speed: 0.7 },
+  // Web Apps (green)
+  { position: [-2.8, -0.8, -2] as [number, number, number], rotation: [1.2, 0.4, 0.6] as [number, number, number], scale: 0.38, color: '#11ff99', speed: 0.9 },
+  // DevOps (amber)
   { position: [0.8, 2.2, -3] as [number, number, number], rotation: [0.6, 1.4, 0.1] as [number, number, number], scale: 0.28, color: '#ffc53d', speed: 1.1 },
-  { position: [-1.5, 1.8, -1] as [number, number, number], rotation: [0.9, 0.2, 1.1] as [number, number, number], scale: 0.2, color: '#11ff99', speed: 1.3 },
-  { position: [3.8, -1.5, -2.5] as [number, number, number], rotation: [0.3, 1.1, 0.8] as [number, number, number], scale: 0.32, color: '#ff801f', speed: 0.8 },
+  // AI / ML (orange)
+  { position: [-1.5, 1.8, -1] as [number, number, number], rotation: [0.9, 0.2, 1.1] as [number, number, number], scale: 0.2, color: '#ff801f', speed: 1.3 },
+  { position: [3.8, -1.5, -2.5] as [number, number, number], rotation: [0.3, 1.1, 0.8] as [number, number, number], scale: 0.32, color: '#3b9eff', speed: 0.8 },
   { position: [-3.2, 0.6, -3] as [number, number, number], rotation: [1.5, 0.7, 0.4] as [number, number, number], scale: 0.22, color: '#fcfdff', speed: 1.0 },
 ]
 
@@ -290,7 +294,7 @@ function SceneContents() {
       <ambientLight intensity={0.3} />
       <pointLight position={[5, 5, 5]} intensity={0.8} color="#3b9eff" />
       <pointLight position={[-5, -3, 3]} intensity={0.5} color="#11ff99" />
-      <pointLight position={[0, 3, -2]} intensity={0.4} color="#ffc53d" />
+      <pointLight position={[0, 3, -2]} intensity={0.4} color="#ff801f" />
 
       <Environment preset="night" />
 

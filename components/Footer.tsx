@@ -21,8 +21,8 @@ export default function Footer() {
               dev<span style={{ color: 'rgba(252,253,255,0.4)' }}>.</span>
             </p>
             <p className="text-[14px] leading-[1.43] text-[#464a4d] max-w-[200px]">
-              Full-stack developer. 3D web enthusiast.
-              Building things for the open web.
+            Full-stack developer. Cloud & AI builder.
+            Building things for the open web.
             </p>
           </div>
 
@@ -47,7 +47,7 @@ export default function Footer() {
           <div>
             <p className="text-[12px] uppercase tracking-[0.18em] text-[#464a4d] mb-4">Stack</p>
             <ul className="flex flex-col gap-3">
-              {['Next.js', 'React Three Fiber', 'TypeScript', 'Vercel'].map((item) => (
+              {['React / Next.js', 'Python / Laravel', 'Docker / Nginx', 'AWS / GCP'].map((item) => (
                 <li key={item}>
                   <a
                     href="#"
@@ -66,7 +66,6 @@ export default function Footer() {
             <ul className="flex flex-col gap-3">
               {[
                 { label: 'GitHub', href: 'https://github.com' },
-                { label: 'Twitter', href: 'https://twitter.com' },
                 { label: 'LinkedIn', href: 'https://linkedin.com' },
                 { label: 'Email', href: 'mailto:dev@example.com' },
               ].map((item) => (
