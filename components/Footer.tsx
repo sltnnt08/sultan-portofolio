@@ -18,7 +18,7 @@ export default function Footer() {
               className="font-mono text-[#fcfdff] text-[13px] tracking-widest uppercase mb-3"
               style={{ letterSpacing: '0.18em' }}
             >
-              dev<span style={{ color: 'rgba(252,253,255,0.4)' }}>.</span>
+              sultan<span style={{ color: 'rgba(252,253,255,0.4)' }}>.</span>
             </p>
             <p className="text-[14px] leading-[1.43] text-[#464a4d] max-w-[200px]">
             Full-stack developer. Cloud & AI builder.
@@ -65,9 +65,9 @@ export default function Footer() {
             <p className="text-[12px] uppercase tracking-[0.18em] text-[#464a4d] mb-4">Connect</p>
             <ul className="flex flex-col gap-3">
               {[
-                { label: 'GitHub', href: 'https://github.com' },
-                { label: 'LinkedIn', href: 'https://linkedin.com' },
-                { label: 'Email', href: 'mailto:dev@example.com' },
+                { label: 'GitHub', href: 'https://github.com/sltnnt08' },
+                { label: 'LinkedIn', href: 'https://linkedin.com/in/muhammadsultannurulloh' },
+                { label: 'Email', href: 'mailto:work.sultanurulloh08@gmail.com' },
               ].map((item) => (
                 <li key={item.label}>
                   <a
@@ -90,7 +90,7 @@ export default function Footer() {
           style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}
         >
           <p className="text-[12px] leading-[1.5] text-[#464a4d]">
-            &copy; {year} Dev. All rights reserved.
+            &copy; {year} Muhammad Sultan Nurulloh Telaumbanua. All rights reserved.
           </p>
           <div className="flex items-center gap-2">
             <span

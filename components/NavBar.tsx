@@ -45,7 +45,7 @@ export default function NavBar() {
           className="font-mono text-[#fcfdff] text-[13px] tracking-widest uppercase mr-auto select-none"
           style={{ letterSpacing: '0.18em' }}
         >
-          dev<span style={{ color: 'rgba(252,253,255,0.4)' }}>.</span>
+          sultan<span style={{ color: 'rgba(252,253,255,0.4)' }}>.</span>
         </a>
 
         {/* Desktop Nav */}
@@ -65,7 +65,7 @@ export default function NavBar() {
         {/* CTA */}
         <div className="hidden lg:flex items-center ml-8 gap-4">
           <a
-            href="mailto:dev@example.com"
+            href="mailto:work.sultanurulloh08@gmail.com"
             className="text-[rgba(252,253,255,0.7)] body-sm hover:text-[#fcfdff] transition-colors"
           >
             Say hello

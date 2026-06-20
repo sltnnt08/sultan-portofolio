@@ -12,7 +12,7 @@ const SKILLS = [
   {
     category: 'Web Apps',
     color: '#11ff99',
-    items: ['React', 'Next.js', 'Express', 'Supabase', 'PostgreSQL', 'Tailwind CSS'],
+    items: ['React', 'Next.js', 'Express', 'Elysia', 'Supabase', 'PostgreSQL'],
   },
   {
     category: 'DevOps & Cloud',
@@ -22,7 +22,7 @@ const SKILLS = [
   {
     category: 'AI / ML',
     color: '#ff801f',
-    items: ['PyTorch', 'TensorFlow', 'scikit-learn', 'LangChain', 'OpenAI API', 'Vector DBs'],
+    items: ['PyTorch', 'TensorFlow', 'scikit-learn', 'OpenCV', 'OpenAI API', 'Jupyter'],
   },
 ]
 

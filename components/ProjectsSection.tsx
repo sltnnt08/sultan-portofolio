@@ -5,64 +5,48 @@ import { motion, useInView } from 'framer-motion'
 
 const PROJECTS = [
   {
-    title: '3D Product Configurator',
+    title: 'SentraWarga',
     description:
-      'A real-time 3D product configurator built with React Three Fiber, allowing users to customise materials, colours, and geometry on a live WebGL canvas.',
-    tags: ['R3F', 'Next.js', 'TypeScript', 'Framer Motion'],
+      'Civic reporting platform enabling citizens to report environmental issues (waste, flooding, pollution) with real-time status tracking and an admin verification dashboard. Awarded Best Capstone Team out of 117 teams at Coding Camp 2026 (DBS Foundation).',
+    tags: ['React', 'Express.js', 'PostgreSQL', 'Supabase', 'JavaScript'],
     glow: 'rgba(0,117,255,0.15)',
     accent: '#3b9eff',
     link: '#',
     featured: true,
+    award: 'Best Capstone Team — Top 15/117',
   },
   {
-    title: 'Dev Tools Dashboard',
+    title: 'Agrify',
     description:
-      'An open-source developer dashboard aggregating CI/CD status, error logs, and deploy metrics in a unified, keyboard-first interface.',
-    tags: ['Next.js', 'Supabase', 'PostgreSQL', 'Tailwind'],
+      'Smart agriculture AI applying computer vision to optimize crop monitoring and farming practices. Represented Indonesia at the India AI Impact Summit 2026 in New Delhi.',
+    tags: ['Python', 'Computer Vision', 'AI / ML', 'OpenCV'],
     glow: 'rgba(34,255,153,0.12)',
     accent: '#11ff99',
     link: '#',
     featured: true,
+    award: 'Intel AI Global Impact Festival 2025 — Country Winner',
   },
   {
-    title: 'Generative GLSL Shader Gallery',
+    title: 'IoT Greenhouse Dashboard',
     description:
-      'A gallery of handwritten GLSL fragment shaders exploring noise fields, signed-distance functions, and procedural geometry.',
-    tags: ['GLSL', 'Three.js', 'WebGL', 'Vite'],
+      'All-in-one management platform for greenhouse operations including IoT sensor monitoring (temperature & humidity), financial management, product tracking, and employee administration.',
+    tags: ['Laravel 11', 'JavaScript', 'MySQL', 'IoT'],
     glow: 'rgba(255,197,61,0.12)',
     accent: '#ffc53d',
     link: '#',
     featured: false,
+    award: null,
   },
   {
-    title: 'Edge API Proxy',
+    title: 'Segilik-Seguluk Brand Identity',
     description:
-      'A Vercel Edge Function API proxy with rate limiting, request coalescing, and response caching — handling 1M+ requests/month.',
-    tags: ['Edge Functions', 'Upstash Redis', 'TypeScript'],
+      'Bali-inspired coffee brand identity featuring a visual system with cultural motifs (frangipani flower, turtle shell), an earthy color palette, and refined typography — blending tradition with modern design.',
+    tags: ['Brand Design', 'Typography', 'Visual System'],
     glow: 'rgba(255,89,0,0.12)',
     accent: '#ff801f',
     link: '#',
     featured: false,
-  },
-  {
-    title: 'Type-safe ORM Layer',
-    description:
-      'A lightweight TypeScript query builder that generates fully typed queries from schema definitions without code generation.',
-    tags: ['TypeScript', 'PostgreSQL', 'Bun'],
-    glow: 'rgba(252,253,255,0.06)',
-    accent: '#fcfdff',
-    link: '#',
-    featured: false,
-  },
-  {
-    title: 'Scroll-Driven Animation Kit',
-    description:
-      'A composable React animation library combining Framer Motion and GSAP ScrollTrigger with a declarative config API.',
-    tags: ['GSAP', 'Framer Motion', 'React', 'npm'],
-    glow: 'rgba(255,32,71,0.1)',
-    accent: '#ff2047',
-    link: '#',
-    featured: false,
+    award: null,
   },
 ]
 
@@ -103,21 +87,32 @@ function ProjectCard({
         aria-hidden="true"
       />
 
-      {/* Featured badge */}
-      {project.featured && (
-        <span
-          className="relative self-start px-[10px] py-1 rounded-full text-[11px] leading-[1.5] font-medium text-[rgba(252,253,255,0.86)]"
-          style={{ background: '#101012', border: '1px solid rgba(255,255,255,0.14)' }}
-        >
-          Featured
-        </span>
-      )}
+      {/* Badges row */}
+      <div className="relative flex flex-wrap gap-2">
+        {project.featured && (
+          <span
+            className="self-start px-[10px] py-1 rounded-full text-[11px] leading-[1.5] font-medium text-[rgba(252,253,255,0.86)]"
+            style={{ background: '#101012', border: '1px solid rgba(255,255,255,0.14)' }}
+          >
+            Featured
+          </span>
+        )}
+        {project.award && (
+          <span
+            className="self-start px-[10px] py-1 rounded-full text-[11px] leading-[1.5] font-medium"
+            style={{
+              background: 'rgba(255,197,61,0.08)',
+              border: '1px solid rgba(255,197,61,0.25)',
+              color: '#ffc53d',
+            }}
+          >
+            {project.award}
+          </span>
+        )}
+      </div>
 
       {/* Title */}
-      <h3
-        className="relative heading-md text-[#fcfdff] text-balance"
-        style={{ fontFamily: 'inherit' }}
-      >
+      <h3 className="relative heading-md text-[#fcfdff] text-balance">
         {project.title}
       </h3>
 
@@ -205,7 +200,7 @@ export default function ProjectsSection() {
         </motion.h2>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {PROJECTS.map((p, i) => (
             <ProjectCard key={p.title} project={p} index={i} />
           ))}

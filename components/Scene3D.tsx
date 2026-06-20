@@ -1,8 +1,8 @@
 'use client'
 
-import { useRef, useMemo, useEffect } from 'react'
+import { useRef, useMemo, useEffect, Suspense } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { Float, Environment, Text3D } from '@react-three/drei'
+import { Float, Environment } from '@react-three/drei'
 import * as THREE from 'three'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -27,10 +27,7 @@ function Shard({
 }) {
   const meshRef = useRef<THREE.Mesh>(null)
 
-  const geometry = useMemo(() => {
-    const geo = new THREE.OctahedronGeometry(1, 0)
-    return geo
-  }, [])
+  const geometry = useMemo(() => new THREE.OctahedronGeometry(1, 0), [])
 
   const material = useMemo(
     () =>
@@ -135,16 +132,14 @@ function ParticleField({ count = 280 }: { count?: number }) {
 
 /* ─── Wireframe grid plane ─── */
 function GridPlane() {
-  const meshRef = useRef<THREE.Mesh>(null)
-
   const geometry = useMemo(() => new THREE.PlaneGeometry(20, 12, 24, 14), [])
   const material = useMemo(
     () =>
       new THREE.MeshBasicMaterial({
-        color: new THREE.Color('rgba(255,255,255,0.04)'),
+        color: new THREE.Color('#ffffff'),
         wireframe: true,
         transparent: true,
-        opacity: 0.08,
+        opacity: 0.06,
       }),
     []
   )
@@ -158,7 +153,6 @@ function GridPlane() {
 
   return (
     <mesh
-      ref={meshRef}
       geometry={geometry}
       material={material}
       rotation={[-Math.PI / 2, 0, 0]}
@@ -251,12 +245,7 @@ function CameraRig() {
       },
     })
 
-    tl.to(proxy, {
-      x: -0.8,
-      y: 0.4,
-      z: 4.2,
-      ease: 'none',
-    })
+    tl.to(proxy, { x: -0.8, y: 0.4, z: 4.2, ease: 'none' })
 
     return () => {
       tl.kill()
@@ -286,7 +275,7 @@ const SHARDS = [
   { position: [-3.2, 0.6, -3] as [number, number, number], rotation: [1.5, 0.7, 0.4] as [number, number, number], scale: 0.22, color: '#fcfdff', speed: 1.0 },
 ]
 
-/* ─── Scene contents ─── */
+/* ─── Scene contents (must be inside Canvas) ─── */
 function SceneContents() {
   return (
     <>
@@ -296,7 +285,9 @@ function SceneContents() {
       <pointLight position={[-5, -3, 3]} intensity={0.5} color="#11ff99" />
       <pointLight position={[0, 3, -2]} intensity={0.4} color="#ff801f" />
 
-      <Environment preset="night" />
+      <Suspense fallback={null}>
+        <Environment preset="night" />
+      </Suspense>
 
       {SHARDS.map((s, i) => (
         <Float key={i} speed={s.speed} rotationIntensity={0.5} floatIntensity={0.4}>
