@@ -73,14 +73,14 @@ function RotatingWord() {
 
     return (
         <motion.span
-            className="relative inline-flex items-baseline justify-center align-baseline text-(--color-ink)"
+            className="relative flex items-baseline justify-center text-(--color-ink)"
             initial={{ opacity: 0, y: 14, filter: 'blur(8px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            style={{ width: `calc(${currentWord.length}ch + 0.35em)`, willChange: 'transform, opacity, filter' }}
+            style={{ willChange: 'transform, opacity, filter' }}
             aria-label={typedText}
         >
-            <span className="inline-flex items-baseline text-transparent bg-clip-text bg-[linear-gradient(135deg,var(--color-accent-green),var(--color-accent-blue))]">
+            <span className="text-transparent bg-clip-text bg-[linear-gradient(135deg,var(--color-accent-green),var(--color-accent-blue))]">
                 {typedText}
             </span>
             <motion.span
@@ -135,11 +135,11 @@ export default function ContactSection() {
                         initial={{ opacity: 0, y: 24 }}
                         animate={inView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.85, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                        className="display-xxl text-balance max-w-3xl"
+                        className="display-xxl max-w-3xl text-center"
                         style={{ color: 'var(--color-ink)' }}
                     >
                         <motion.span
-                            className="inline-flex flex-wrap items-baseline justify-center gap-x-1 gap-y-0 text-center"
+                            className="flex flex-col items-center gap-y-0"
                             initial={{ opacity: 0, y: 16, filter: 'blur(8px)' }}
                             animate={inView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
                             transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
