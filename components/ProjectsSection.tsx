@@ -9,8 +9,8 @@ const PROJECTS = [
     description:
       'Civic reporting platform enabling citizens to report environmental issues (waste, flooding, pollution) with real-time status tracking and an admin verification dashboard. Awarded Best Capstone Team out of 117 teams at Coding Camp 2026 (DBS Foundation).',
     tags: ['React', 'Express.js', 'PostgreSQL', 'Supabase', 'JavaScript'],
-    glow: 'rgba(0,117,255,0.15)',
-    accent: '#3b9eff',
+    glow: 'rgba(0,117,255,0.12)',
+    accent: 'var(--color-accent-blue)',
     link: '#',
     featured: true,
     award: 'Best Capstone Team — Top 15/117',
@@ -20,8 +20,8 @@ const PROJECTS = [
     description:
       'Smart agriculture AI applying computer vision to optimize crop monitoring and farming practices. Represented Indonesia at the India AI Impact Summit 2026 in New Delhi.',
     tags: ['Python', 'Computer Vision', 'AI / ML', 'OpenCV'],
-    glow: 'rgba(34,255,153,0.12)',
-    accent: '#11ff99',
+    glow: 'rgba(34,255,153,0.09)',
+    accent: 'var(--color-accent-green)',
     link: '#',
     featured: true,
     award: 'Intel AI Global Impact Festival 2025 — Country Winner',
@@ -31,8 +31,8 @@ const PROJECTS = [
     description:
       'All-in-one management platform for greenhouse operations including IoT sensor monitoring (temperature & humidity), financial management, product tracking, and employee administration.',
     tags: ['Laravel 11', 'JavaScript', 'MySQL', 'IoT'],
-    glow: 'rgba(255,197,61,0.12)',
-    accent: '#ffc53d',
+    glow: 'rgba(255,197,61,0.09)',
+    accent: 'var(--color-accent-yellow)',
     link: '#',
     featured: false,
     award: null,
@@ -42,8 +42,8 @@ const PROJECTS = [
     description:
       'Bali-inspired coffee brand identity featuring a visual system with cultural motifs (frangipani flower, turtle shell), an earthy color palette, and refined typography — blending tradition with modern design.',
     tags: ['Brand Design', 'Typography', 'Visual System'],
-    glow: 'rgba(255,89,0,0.12)',
-    accent: '#ff801f',
+    glow: 'rgba(255,89,0,0.09)',
+    accent: 'var(--color-accent-orange)',
     link: '#',
     featured: false,
     award: null,
@@ -71,10 +71,9 @@ function ProjectCard({
       onMouseLeave={() => setHovered(false)}
       className="relative p-8 rounded-[12px] flex flex-col gap-4 overflow-hidden cursor-pointer"
       style={{
-        background: project.featured ? '#101012' : '#0a0a0c',
-        border: '1px solid rgba(255,255,255,0.14)',
+        background: project.featured ? 'var(--color-surface-elevated)' : 'var(--color-surface-card)',
+        border: `1px solid ${hovered ? 'var(--color-hairline-strong)' : 'var(--color-hairline)'}`,
         transition: 'border-color 0.2s ease',
-        borderColor: hovered ? 'rgba(255,255,255,0.22)' : 'rgba(255,255,255,0.14)',
       }}
     >
       {/* Atmospheric glow */}
@@ -91,8 +90,12 @@ function ProjectCard({
       <div className="relative flex flex-wrap gap-2">
         {project.featured && (
           <span
-            className="self-start px-[10px] py-1 rounded-full text-[11px] leading-[1.5] font-medium text-[rgba(252,253,255,0.86)]"
-            style={{ background: '#101012', border: '1px solid rgba(255,255,255,0.14)' }}
+            className="self-start px-[10px] py-1 rounded-full text-[11px] leading-[1.5] font-medium"
+            style={{
+              background: 'var(--color-surface-elevated)',
+              border: '1px solid var(--color-hairline-strong)',
+              color: 'var(--color-body-text)',
+            }}
           >
             Featured
           </span>
@@ -102,8 +105,8 @@ function ProjectCard({
             className="self-start px-[10px] py-1 rounded-full text-[11px] leading-[1.5] font-medium"
             style={{
               background: 'rgba(255,197,61,0.08)',
-              border: '1px solid rgba(255,197,61,0.25)',
-              color: '#ffc53d',
+              border: '1px solid rgba(255,197,61,0.22)',
+              color: 'var(--color-accent-yellow)',
             }}
           >
             {project.award}
@@ -112,12 +115,18 @@ function ProjectCard({
       </div>
 
       {/* Title */}
-      <h3 className="relative heading-md text-[#fcfdff] text-balance">
+      <h3
+        className="relative heading-md text-balance"
+        style={{ color: 'var(--color-ink)' }}
+      >
         {project.title}
       </h3>
 
       {/* Description */}
-      <p className="relative body-sm text-[rgba(252,253,255,0.7)] leading-[1.5] flex-1">
+      <p
+        className="relative body-sm leading-[1.5] flex-1"
+        style={{ color: 'var(--color-charcoal)' }}
+      >
         {project.description}
       </p>
 
@@ -128,9 +137,9 @@ function ProjectCard({
             key={tag}
             className="px-2 py-[3px] rounded-[4px] text-[11px] leading-[1.5]"
             style={{
-              background: '#06060a',
-              border: '1px solid rgba(255,255,255,0.08)',
-              color: 'rgba(252,253,255,0.55)',
+              background: 'var(--color-surface-deep)',
+              border: '1px solid var(--color-hairline)',
+              color: 'var(--color-ash)',
               fontFamily: 'var(--font-geist-mono), monospace',
             }}
           >
@@ -164,14 +173,14 @@ export default function ProjectsSection() {
       id="projects"
       ref={ref}
       className="relative py-24 overflow-hidden"
-      style={{ background: '#000000' }}
+      style={{ background: 'var(--color-canvas)' }}
     >
       {/* Orange atmospheric glow */}
       <div
         className="absolute top-0 left-0 right-0 h-[500px] pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 70% 60% at 50% 0%, rgba(255,89,0,0.12) 0%, transparent 70%)',
+            'radial-gradient(ellipse 70% 60% at 50% 0%, rgba(255,89,0,0.09) 0%, transparent 70%)',
         }}
         aria-hidden="true"
       />
@@ -182,7 +191,8 @@ export default function ProjectsSection() {
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.5 }}
-          className="mb-4 text-[12px] uppercase tracking-[0.18em] text-[#464a4d]"
+          className="mb-4 text-[12px] uppercase tracking-[0.18em]"
+          style={{ color: 'var(--color-stone)' }}
         >
           Selected work
         </motion.p>
@@ -192,11 +202,12 @@ export default function ProjectsSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="display-xl text-[#fcfdff] text-balance max-w-2xl mb-14"
+          className="display-xl text-balance max-w-2xl mb-14"
+          style={{ color: 'var(--color-ink)' }}
         >
           Projects shipped
           <br />
-          <span style={{ color: 'rgba(252,253,255,0.4)' }}>to production.</span>
+          <span style={{ color: 'var(--color-stone)' }}>to production.</span>
         </motion.h2>
 
         {/* Grid */}

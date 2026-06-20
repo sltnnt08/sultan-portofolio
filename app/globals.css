@@ -11,19 +11,29 @@
   --font-display: 'Georgia', 'Tiempos Headline', serif;
   --font-marketing: 'Inter Tight', 'Inter', system-ui, sans-serif;
 
-  /* Canvas / Surfaces */
+  /* Radii */
+  --radius-none: 0px;
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius: 12px;
+}
+
+/* ─── Dark mode tokens (default) ─── */
+:root,
+html.dark {
   --color-canvas: #000000;
   --color-surface-card: #0a0a0c;
   --color-surface-elevated: #101012;
   --color-surface-deep: #06060a;
   --color-surface-light: #f1f7fe;
 
-  /* Borders */
   --color-hairline: rgba(255, 255, 255, 0.06);
   --color-hairline-strong: rgba(255, 255, 255, 0.14);
   --color-divider-soft: rgba(255, 255, 255, 0.04);
 
-  /* Text */
   --color-ink: #fcfdff;
   --color-body-text: rgba(252, 253, 255, 0.86);
   --color-charcoal: rgba(252, 253, 255, 0.7);
@@ -33,11 +43,9 @@
   --color-on-light: #000000;
   --color-on-light-mute: rgba(0, 0, 51, 0.7);
 
-  /* Brand */
   --color-primary: #fcfdff;
   --color-primary-on: #000000;
 
-  /* Accents */
   --color-accent-orange: #ff801f;
   --color-accent-orange-glow: rgba(255, 89, 0, 0.22);
   --color-accent-yellow: #ffc53d;
@@ -49,20 +57,79 @@
   --color-accent-red-glow: rgba(255, 32, 71, 0.34);
   --color-link: #3b9eff;
 
-  /* Shadcn compat */
   --color-background: var(--color-canvas);
   --color-foreground: var(--color-ink);
   --color-border: var(--color-hairline-strong);
   --color-ring: var(--color-hairline-strong);
 
-  /* Radii */
-  --radius-none: 0px;
-  --radius-xs: 4px;
-  --radius-sm: 6px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
-  --radius: 12px;
+  /* Nav */
+  --color-nav-bg-scrolled: rgba(0, 0, 0, 0.88);
+  --color-nav-border: rgba(255, 255, 255, 0.06);
+  --color-mobile-menu-bg: rgba(0, 0, 0, 0.96);
+  --color-mobile-menu-border: rgba(255, 255, 255, 0.06);
+
+  /* Syntax tokens */
+  --token-keyword: #3b9eff;
+  --token-string: #11ff99;
+  --token-fn: #fcfdff;
+  --token-comment: #464a4d;
+  --token-type: #ffc53d;
+  --token-punct: rgba(252, 253, 255, 0.5);
+}
+
+/* ─── Light mode tokens ─── */
+html.light {
+  --color-canvas: #f5f5f0;
+  --color-surface-card: #ffffff;
+  --color-surface-elevated: #f0efe9;
+  --color-surface-deep: #e8e7e1;
+  --color-surface-light: #ffffff;
+
+  --color-hairline: rgba(0, 0, 0, 0.07);
+  --color-hairline-strong: rgba(0, 0, 0, 0.12);
+  --color-divider-soft: rgba(0, 0, 0, 0.05);
+
+  --color-ink: #0a0a0a;
+  --color-body-text: rgba(10, 10, 10, 0.82);
+  --color-charcoal: rgba(10, 10, 10, 0.65);
+  --color-mute: #5a5a5a;
+  --color-ash: #777777;
+  --color-stone: #999999;
+  --color-on-light: #000000;
+  --color-on-light-mute: rgba(0, 0, 0, 0.65);
+
+  --color-primary: #0a0a0a;
+  --color-primary-on: #ffffff;
+
+  --color-accent-orange: #d95e00;
+  --color-accent-orange-glow: rgba(217, 94, 0, 0.14);
+  --color-accent-yellow: #b38600;
+  --color-accent-blue: #1a6fcf;
+  --color-accent-blue-glow: rgba(26, 111, 207, 0.15);
+  --color-accent-green: #00874a;
+  --color-accent-green-glow: rgba(0, 135, 74, 0.12);
+  --color-accent-red: #cc0033;
+  --color-accent-red-glow: rgba(204, 0, 51, 0.12);
+  --color-link: #1a6fcf;
+
+  --color-background: var(--color-canvas);
+  --color-foreground: var(--color-ink);
+  --color-border: var(--color-hairline-strong);
+  --color-ring: var(--color-hairline-strong);
+
+  /* Nav */
+  --color-nav-bg-scrolled: rgba(245, 245, 240, 0.92);
+  --color-nav-border: rgba(0, 0, 0, 0.08);
+  --color-mobile-menu-bg: rgba(245, 245, 240, 0.98);
+  --color-mobile-menu-border: rgba(0, 0, 0, 0.08);
+
+  /* Syntax tokens — light theme uses slightly adjusted tones */
+  --token-keyword: #1a6fcf;
+  --token-string: #00874a;
+  --token-fn: #0a0a0a;
+  --token-comment: #999999;
+  --token-type: #b38600;
+  --token-punct: rgba(10, 10, 10, 0.5);
 }
 
 /* ─── Base ─── */
@@ -74,20 +141,22 @@
   }
 
   html {
-    background: #000000;
-    color: #fcfdff;
+    background: var(--color-canvas);
+    color: var(--color-ink);
     scroll-behavior: smooth;
+    transition: background 0.25s ease, color 0.25s ease;
   }
 
   body {
-    background: #000000;
-    color: #fcfdff;
+    background: var(--color-canvas);
+    color: var(--color-ink);
     font-family: 'Inter', system-ui, sans-serif;
     font-size: 16px;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    transition: background 0.25s ease, color 0.25s ease;
   }
 
   /* Display / Hero text */
@@ -180,10 +249,10 @@
   background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255,197,61,0.15) 0%, transparent 70%);
 }
 
-/* ─── Syntax highlight tokens ─── */
-.token-keyword { color: #3b9eff; }
-.token-string  { color: #11ff99; }
-.token-fn      { color: #fcfdff; }
-.token-comment { color: #464a4d; }
-.token-type    { color: #ffc53d; }
-.token-punct   { color: rgba(252,253,255,0.5); }
+/* ─── Syntax highlight tokens (use CSS vars so they switch with theme) ─── */
+.token-keyword { color: var(--token-keyword); }
+.token-string  { color: var(--token-string); }
+.token-fn      { color: var(--token-fn); }
+.token-comment { color: var(--token-comment); }
+.token-type    { color: var(--token-type); }
+.token-punct   { color: var(--token-punct); }

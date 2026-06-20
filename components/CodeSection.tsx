@@ -267,21 +267,24 @@ function CodeWindow({
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className="rounded-[12px] overflow-hidden w-full"
       style={{
-        background: '#06060a',
-        border: '1px solid rgba(255,255,255,0.14)',
+        background: 'var(--color-surface-deep)',
+        border: '1px solid var(--color-hairline-strong)',
       }}
     >
       {/* Traffic lights */}
       <div
         className="flex items-center gap-2 px-5 py-3"
-        style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}
+        style={{ borderBottom: '1px solid var(--color-hairline)' }}
       >
-        <span className="w-3 h-3 rounded-full bg-[#ff2047]" aria-hidden="true" />
-        <span className="w-3 h-3 rounded-full bg-[#ffc53d]" aria-hidden="true" />
-        <span className="w-3 h-3 rounded-full bg-[#11ff99]" aria-hidden="true" />
+        <span className="w-3 h-3 rounded-full" style={{ background: 'var(--color-accent-red)' }} aria-hidden="true" />
+        <span className="w-3 h-3 rounded-full" style={{ background: 'var(--color-accent-yellow)' }} aria-hidden="true" />
+        <span className="w-3 h-3 rounded-full" style={{ background: 'var(--color-accent-green)' }} aria-hidden="true" />
         <span
-          className="ml-3 text-[12px] leading-[1.5] text-[rgba(252,253,255,0.7)]"
-          style={{ fontFamily: 'var(--font-geist-mono), monospace' }}
+          className="ml-3 text-[12px] leading-[1.5]"
+          style={{
+            fontFamily: 'var(--font-geist-mono), monospace',
+            color: 'var(--color-charcoal)',
+          }}
         >
           {tab.label}
         </span>
@@ -313,14 +316,14 @@ export default function CodeSection() {
     <section
       ref={ref}
       className="relative py-24 overflow-hidden"
-      style={{ background: '#000000' }}
+      style={{ background: 'var(--color-canvas)' }}
     >
       {/* Green atmospheric glow */}
       <div
         className="absolute top-0 left-0 right-0 h-[500px] pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 70% 60% at 50% 0%, rgba(34,255,153,0.1) 0%, transparent 70%)',
+            'radial-gradient(ellipse 70% 60% at 50% 0%, rgba(34,255,153,0.07) 0%, transparent 70%)',
         }}
         aria-hidden="true"
       />
@@ -334,7 +337,8 @@ export default function CodeSection() {
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : {}}
               transition={{ duration: 0.5 }}
-              className="mb-4 text-[12px] uppercase tracking-[0.18em] text-[#464a4d]"
+              className="mb-4 text-[12px] uppercase tracking-[0.18em]"
+              style={{ color: 'var(--color-stone)' }}
             >
               Code quality
             </motion.p>
@@ -343,18 +347,20 @@ export default function CodeSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="display-xl text-[#fcfdff] text-balance mb-6"
+              className="display-xl text-balance mb-6"
+              style={{ color: 'var(--color-ink)' }}
             >
               Written for
               <br />
-              <span style={{ color: 'rgba(252,253,255,0.4)' }}>humans first.</span>
+              <span style={{ color: 'var(--color-stone)' }}>humans first.</span>
             </motion.h2>
 
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="body-lg text-[rgba(252,253,255,0.7)] mb-8"
+              className="body-lg mb-8"
+              style={{ color: 'var(--color-charcoal)' }}
             >
               Across every language and framework — clean architecture,
               explicit validation, and code that explains itself.
@@ -368,10 +374,10 @@ export default function CodeSection() {
               className="flex flex-col gap-3"
             >
               {[
-                { dot: '#3b9eff', text: 'React with typed Supabase real-time subscriptions' },
-                { dot: '#11ff99', text: 'Laravel with validated request objects & Eloquent' },
-                { dot: '#ffc53d', text: 'Python AI pipelines with model.fit & OpenCV' },
-                { dot: '#ff801f', text: 'Docker + Nginx multi-service deployment configs' },
+                { dot: 'var(--color-accent-blue)', text: 'React with typed Supabase real-time subscriptions' },
+                { dot: 'var(--color-accent-green)', text: 'Laravel with validated request objects & Eloquent' },
+                { dot: 'var(--color-accent-yellow)', text: 'Python AI pipelines with model.fit & OpenCV' },
+                { dot: 'var(--color-accent-orange)', text: 'Docker + Nginx multi-service deployment configs' },
               ].map(({ dot, text }) => (
                 <li key={text} className="flex items-start gap-3">
                   <span
@@ -379,7 +385,7 @@ export default function CodeSection() {
                     style={{ background: dot }}
                     aria-hidden="true"
                   />
-                  <span className="body-sm text-[rgba(252,253,255,0.7)]">{text}</span>
+                  <span className="body-sm" style={{ color: 'var(--color-charcoal)' }}>{text}</span>
                 </li>
               ))}
             </motion.ul>
@@ -396,12 +402,11 @@ export default function CodeSection() {
                   className="px-3 py-[6px] rounded-[6px] text-[13px] leading-[1.6] whitespace-nowrap transition-colors duration-150 bg-transparent border-none cursor-pointer"
                   style={{
                     fontFamily: 'var(--font-geist-mono), monospace',
-                    color: activeTab === i ? '#fcfdff' : 'rgba(252,253,255,0.5)',
-                    background: activeTab === i ? '#101012' : 'transparent',
-                    borderBottom:
-                      activeTab === i
-                        ? '1px solid rgba(255,255,255,0.14)'
-                        : '1px solid transparent',
+                    color: activeTab === i ? 'var(--color-ink)' : 'var(--color-ash)',
+                    background: activeTab === i ? 'var(--color-surface-elevated)' : 'transparent',
+                    borderBottom: activeTab === i
+                      ? '1px solid var(--color-hairline-strong)'
+                      : '1px solid transparent',
                   }}
                 >
                   {tab.label}

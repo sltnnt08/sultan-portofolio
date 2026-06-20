@@ -42,14 +42,14 @@ export default function ContactSection() {
       id="contact"
       ref={ref}
       className="relative py-32 overflow-hidden"
-      style={{ background: '#000000' }}
+      style={{ background: 'var(--color-canvas)' }}
     >
       {/* Red atmospheric glow */}
       <div
         className="absolute top-0 left-0 right-0 h-[600px] pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 70% 60% at 50% 0%, rgba(255,32,71,0.1) 0%, transparent 70%)',
+            'radial-gradient(ellipse 70% 60% at 50% 0%, rgba(255,32,71,0.07) 0%, transparent 70%)',
         }}
         aria-hidden="true"
       />
@@ -58,7 +58,7 @@ export default function ContactSection() {
         {/* Divider */}
         <div
           className="w-full h-px mb-24"
-          style={{ background: 'rgba(255,255,255,0.06)' }}
+          style={{ background: 'var(--color-hairline)' }}
           aria-hidden="true"
         />
 
@@ -68,7 +68,8 @@ export default function ContactSection() {
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.5 }}
-            className="text-[12px] uppercase tracking-[0.18em] text-[#464a4d]"
+            className="text-[12px] uppercase tracking-[0.18em]"
+            style={{ color: 'var(--color-stone)' }}
           >
             Let&apos;s work together
           </motion.p>
@@ -78,11 +79,12 @@ export default function ContactSection() {
             initial={{ opacity: 0, y: 24 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="display-xxl text-[#fcfdff] text-balance max-w-3xl"
+            className="display-xxl text-balance max-w-3xl"
+            style={{ color: 'var(--color-ink)' }}
           >
             Have a project
             <br />
-            <span style={{ color: 'rgba(252,253,255,0.4)' }}>in mind?</span>
+            <span style={{ color: 'var(--color-stone)' }}>in mind?</span>
           </motion.h2>
 
           {/* Subtitle */}
@@ -90,8 +92,8 @@ export default function ContactSection() {
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.55, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-lg text-[rgba(252,253,255,0.7)] leading-[1.3]"
-            style={{ fontSize: '20px', fontWeight: 400 }}
+            className="max-w-lg leading-[1.3]"
+            style={{ fontSize: '20px', fontWeight: 400, color: 'var(--color-charcoal)' }}
           >
             I&apos;m available for freelance and contract work. Let&apos;s build
             something that lasts.
@@ -106,7 +108,8 @@ export default function ContactSection() {
           >
             <a
               href="mailto:work.sultanurulloh08@gmail.com"
-              className="inline-flex items-center justify-center h-9 px-4 rounded-[8px] bg-[#fcfdff] text-[#000000] text-[14px] font-medium hover:bg-[#f1f7fe] transition-colors duration-200"
+              className="inline-flex items-center justify-center h-9 px-4 rounded-[8px] text-[14px] font-medium transition-colors duration-200"
+              style={{ background: 'var(--color-ink)', color: 'var(--color-canvas)' }}
             >
               Send an email
             </a>
@@ -114,10 +117,11 @@ export default function ContactSection() {
               href="https://github.com/sltnnt08"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center h-9 px-4 rounded-[8px] text-[#fcfdff] text-[14px] font-medium transition-colors duration-200"
+              className="inline-flex items-center justify-center h-9 px-4 rounded-[8px] text-[14px] font-medium transition-colors duration-200"
               style={{
-                background: '#101012',
-                border: '1px solid rgba(255,255,255,0.14)',
+                background: 'var(--color-surface-elevated)',
+                border: '1px solid var(--color-hairline-strong)',
+                color: 'var(--color-ink)',
               }}
             >
               View GitHub
@@ -138,7 +142,10 @@ export default function ContactSection() {
                 target={link.href.startsWith('http') ? '_blank' : undefined}
                 rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                 aria-label={link.label}
-                className="text-[#464a4d] hover:text-[#fcfdff] transition-colors duration-200"
+                className="transition-colors duration-200"
+                style={{ color: 'var(--color-stone)' }}
+                onMouseEnter={e => (e.currentTarget.style.color = 'var(--color-ink)')}
+                onMouseLeave={e => (e.currentTarget.style.color = 'var(--color-stone)')}
               >
                 {link.icon}
               </a>

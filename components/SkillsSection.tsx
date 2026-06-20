@@ -6,22 +6,22 @@ import { motion, useInView } from 'framer-motion'
 const SKILLS = [
   {
     category: 'Development',
-    color: '#3b9eff',
+    color: 'var(--color-accent-blue)',
     items: ['Python', 'JavaScript', 'PHP (Laravel)', 'TypeScript', 'REST & GraphQL', 'SQL'],
   },
   {
     category: 'Web Apps',
-    color: '#11ff99',
+    color: 'var(--color-accent-green)',
     items: ['React', 'Next.js', 'Express', 'Elysia', 'Supabase', 'PostgreSQL'],
   },
   {
     category: 'DevOps & Cloud',
-    color: '#ffc53d',
+    color: 'var(--color-accent-yellow)',
     items: ['Docker', 'Nginx', 'Linux', 'AWS', 'GCP', 'CI/CD'],
   },
   {
     category: 'AI / ML',
-    color: '#ff801f',
+    color: 'var(--color-accent-orange)',
     items: ['PyTorch', 'TensorFlow', 'scikit-learn', 'OpenCV', 'OpenAI API', 'Jupyter'],
   },
 ]
@@ -48,8 +48,8 @@ function SkillCard({
       transition={{ duration: 0.55, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
       className="p-8 rounded-[12px] flex flex-col gap-5"
       style={{
-        background: '#0a0a0c',
-        border: '1px solid rgba(255,255,255,0.14)',
+        background: 'var(--color-surface-card)',
+        border: '1px solid var(--color-hairline-strong)',
       }}
     >
       {/* Category label */}
@@ -59,7 +59,10 @@ function SkillCard({
           style={{ background: color }}
           aria-hidden="true"
         />
-        <span className="text-[14px] font-medium leading-[1.43] text-[#fcfdff]">
+        <span
+          className="text-[14px] font-medium leading-[1.43]"
+          style={{ color: 'var(--color-ink)' }}
+        >
           {category}
         </span>
       </div>
@@ -69,10 +72,11 @@ function SkillCard({
         {items.map((skill) => (
           <span
             key={skill}
-            className="px-3 py-1 rounded-full text-[12px] leading-[1.5] text-[rgba(252,253,255,0.7)]"
+            className="px-3 py-1 rounded-full text-[12px] leading-[1.5]"
             style={{
-              background: '#101012',
-              border: '1px solid rgba(255,255,255,0.08)',
+              background: 'var(--color-surface-elevated)',
+              border: '1px solid var(--color-hairline)',
+              color: 'var(--color-charcoal)',
             }}
           >
             {skill}
@@ -92,14 +96,14 @@ export default function SkillsSection() {
       id="skills"
       ref={ref}
       className="relative py-24 overflow-hidden"
-      style={{ background: '#000000' }}
+      style={{ background: 'var(--color-canvas)' }}
     >
       {/* Blue atmospheric glow */}
       <div
         className="absolute top-0 left-0 right-0 h-[500px] pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 70% 60% at 50% 0%, rgba(0,117,255,0.14) 0%, transparent 70%)',
+            'radial-gradient(ellipse 70% 60% at 50% 0%, rgba(0,117,255,0.1) 0%, transparent 70%)',
         }}
         aria-hidden="true"
       />
@@ -110,7 +114,8 @@ export default function SkillsSection() {
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.5 }}
-          className="mb-4 text-[12px] uppercase tracking-[0.18em] text-[#464a4d]"
+          className="mb-4 text-[12px] uppercase tracking-[0.18em]"
+          style={{ color: 'var(--color-stone)' }}
         >
           Technical skills
         </motion.p>
@@ -120,11 +125,12 @@ export default function SkillsSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="display-xl text-[#fcfdff] text-balance max-w-2xl mb-14"
+          className="display-xl text-balance max-w-2xl mb-14"
+          style={{ color: 'var(--color-ink)' }}
         >
           The stack behind
           <br />
-          <span style={{ color: 'rgba(252,253,255,0.4)' }}>the craft.</span>
+          <span style={{ color: 'var(--color-stone)' }}>the craft.</span>
         </motion.h2>
 
         {/* Grid */}

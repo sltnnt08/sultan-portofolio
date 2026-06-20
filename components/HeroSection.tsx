@@ -25,7 +25,7 @@ export default function HeroSection() {
       id="about"
       ref={containerRef}
       className="relative min-h-screen flex flex-col justify-center overflow-hidden"
-      style={{ background: '#000000' }}
+      style={{ background: 'var(--color-canvas)' }}
     >
       {/* 3D Canvas — fills entire hero */}
       <div className="absolute inset-0 z-0">
@@ -35,10 +35,7 @@ export default function HeroSection() {
       {/* Subtle bottom fade so content below blends */}
       <div
         className="absolute bottom-0 left-0 right-0 h-48 z-10 pointer-events-none"
-        style={{
-          background:
-            'linear-gradient(to bottom, transparent, #000000)',
-        }}
+        style={{ background: 'linear-gradient(to bottom, transparent, var(--color-canvas))' }}
       />
 
       {/* Hero content */}
@@ -52,11 +49,16 @@ export default function HeroSection() {
           className="mb-8"
         >
           <span
-            className="inline-flex items-center gap-2 px-[10px] py-1 rounded-full text-[12px] leading-[1.5] text-[rgba(252,253,255,0.86)]"
-            style={{ background: '#101012', border: '1px solid rgba(255,255,255,0.14)' }}
+            className="inline-flex items-center gap-2 px-[10px] py-1 rounded-full text-[12px] leading-[1.5]"
+            style={{
+              background: 'var(--color-surface-elevated)',
+              border: '1px solid var(--color-hairline-strong)',
+              color: 'var(--color-body-text)',
+            }}
           >
             <span
-              className="w-2 h-2 rounded-full bg-[#11ff99] animate-pulse"
+              className="w-2 h-2 rounded-full animate-pulse"
+              style={{ background: 'var(--color-accent-green)' }}
               aria-hidden="true"
             />
             Open to work — Worldwide
@@ -69,11 +71,12 @@ export default function HeroSection() {
           initial="hidden"
           animate="show"
           custom={1}
-          className="display-xxl text-[#fcfdff] text-balance max-w-4xl"
+          className="display-xxl text-balance max-w-4xl"
+          style={{ color: 'var(--color-ink)' }}
         >
           Building interfaces
           <br />
-          <span style={{ color: 'rgba(252,253,255,0.45)' }}>that feel alive.</span>
+          <span style={{ color: 'var(--color-stone)' }}>that feel alive.</span>
         </motion.h1>
 
         {/* Subtitle */}
@@ -82,8 +85,8 @@ export default function HeroSection() {
           initial="hidden"
           animate="show"
           custom={2}
-          className="mt-6 max-w-xl text-[rgba(252,253,255,0.7)] leading-[1.3]"
-          style={{ fontSize: '20px', fontWeight: 400 }}
+          className="mt-6 max-w-xl leading-[1.3]"
+          style={{ fontSize: '20px', fontWeight: 400, color: 'var(--color-charcoal)' }}
         >
           Full-stack developer building performant web applications,
           cloud-native systems, and applied AI solutions.
@@ -103,7 +106,8 @@ export default function HeroSection() {
               e.preventDefault()
               document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })
             }}
-            className="inline-flex items-center justify-center h-9 px-4 rounded-[8px] bg-[#fcfdff] text-[#000000] text-[14px] font-medium hover:bg-[#f1f7fe] transition-colors duration-200"
+            className="inline-flex items-center justify-center h-9 px-4 rounded-[8px] text-[14px] font-medium transition-colors duration-200"
+            style={{ background: 'var(--color-ink)', color: 'var(--color-canvas)' }}
           >
             View projects
           </a>
@@ -113,10 +117,11 @@ export default function HeroSection() {
               e.preventDefault()
               document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })
             }}
-            className="inline-flex items-center justify-center h-9 px-4 rounded-[8px] text-[#fcfdff] text-[14px] font-medium transition-colors duration-200"
+            className="inline-flex items-center justify-center h-9 px-4 rounded-[8px] text-[14px] font-medium transition-colors duration-200"
             style={{
-              background: '#101012',
-              border: '1px solid rgba(255,255,255,0.14)',
+              background: 'var(--color-surface-elevated)',
+              border: '1px solid var(--color-hairline-strong)',
+              color: 'var(--color-ink)',
             }}
           >
             Get in touch
@@ -135,7 +140,10 @@ export default function HeroSection() {
             className="w-px h-12 bg-gradient-to-b from-transparent via-[rgba(252,253,255,0.2)] to-transparent"
             aria-hidden="true"
           />
-          <span className="body-sm text-[#464a4d] uppercase tracking-widest text-[11px]">
+          <span
+            className="body-sm uppercase tracking-widest text-[11px]"
+            style={{ color: 'var(--color-stone)' }}
+          >
             scroll to explore
           </span>
         </motion.div>
